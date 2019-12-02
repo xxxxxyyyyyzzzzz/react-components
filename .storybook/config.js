@@ -5,7 +5,11 @@ addParameters({
   viewport: {
     viewports: INITIAL_VIEWPORTS,
     defaultViewport: "responsive"
-  }
+  },
+  backgrounds: [
+    { name: "twitter", value: "#00aced", default: true },
+    { name: "facebook", value: "#3b5998" }
+  ]
 });
 
 // automatically import all files ending in *.stories.js
