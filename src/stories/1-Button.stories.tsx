@@ -6,7 +6,12 @@ import { withKnobs, text } from "@storybook/addon-knobs";
 
 export default {
   title: "Button",
-  decorators: [withKnobs]
+  decorators: [withKnobs],
+  parameters: {
+    docs: {
+      page: null
+    }
+  }
 };
 
 export const textA = () => (
