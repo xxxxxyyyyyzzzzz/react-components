@@ -1230,6 +1230,13 @@
     react "^16.8.3"
     util-deprecate "^1.0.2"
 
+"@storybook/addon-console@1.2.1":
+  version "1.2.1"
+  resolved "https://registry.npm.taobao.org/@storybook/addon-console/download/@storybook/addon-console-1.2.1.tgz#f338401661b4636118b13839848061e996d4e104"
+  integrity sha1-8zhAFmG0Y2EYsTg5hIBh6ZbU4QQ=
+  dependencies:
+    global "^4.3.2"
+
 "@storybook/addon-docs@5.2.7":
   version "5.2.7"
   resolved "https://registry.npm.taobao.org/@storybook/addon-docs/download/@storybook/addon-docs-5.2.7.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40storybook%2Faddon-docs%2Fdownload%2F%40storybook%2Faddon-docs-5.2.7.tgz#cab58fa944fe876173350346175ea516f8437306"

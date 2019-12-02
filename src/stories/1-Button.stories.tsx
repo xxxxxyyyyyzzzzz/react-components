@@ -15,7 +15,13 @@ export default {
 };
 
 export const textA = () => (
-  <Button onClick={action("clicked")}>{text("content", "Hello Button")}</Button>
+  <Button
+    onClick={() => {
+      console.warn(123123);
+    }}
+  >
+    {text("content", "Hello Button")}
+  </Button>
 );
 
 export const emoji = () => (

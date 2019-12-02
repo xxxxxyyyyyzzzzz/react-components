@@ -1,7 +1,14 @@
 import { configure, addParameters, addDecorator } from "@storybook/react";
 import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
 import { withA11y } from "@storybook/addon-a11y";
+// import { setConsoleOptions, withConsole } from "@storybook/addon-console";
+import "@storybook/addon-console";
 
+// setConsoleOptions({
+//   panelExclude: []
+// });
+
+// addDecorator((storyFn, context) => withConsole()(storyFn)(context));
 addDecorator(withA11y);
 
 addParameters({
