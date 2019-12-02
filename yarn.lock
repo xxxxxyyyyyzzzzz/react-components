@@ -1144,6 +1144,25 @@
     prop-types "^15.7.2"
     qs "^6.6.0"
 
+"@storybook/addon-storysource@5.2.7":
+  version "5.2.7"
+  resolved "https://registry.npm.taobao.org/@storybook/addon-storysource/download/@storybook/addon-storysource-5.2.7.tgz#4c94b7f5c7514f444ef1f765d4d559692f0b3c07"
+  integrity sha1-TJS39cdRT0RO8fdl1NVZaS8LPAc=
+  dependencies:
+    "@storybook/addons" "5.2.7"
+    "@storybook/components" "5.2.7"
+    "@storybook/router" "5.2.7"
+    "@storybook/source-loader" "5.2.7"
+    "@storybook/theming" "5.2.7"
+    core-js "^3.0.1"
+    estraverse "^4.2.0"
+    loader-utils "^1.2.3"
+    prettier "^1.16.4"
+    prop-types "^15.7.2"
+    react-syntax-highlighter "^8.0.1"
+    regenerator-runtime "^0.12.1"
+    util-deprecate "^1.0.2"
+
 "@storybook/addons@5.2.7", "@storybook/addons@^5.2.6":
   version "5.2.7"
   resolved "https://registry.npm.taobao.org/@storybook/addons/download/@storybook/addons-5.2.7.tgz#a868ca0a209aefa8a17718b58327dd3ff37f2d76"
@@ -1383,6 +1402,21 @@
     lodash "^4.17.15"
     memoizerific "^1.11.3"
     qs "^6.6.0"
+
+"@storybook/source-loader@5.2.7":
+  version "5.2.7"
+  resolved "https://registry.npm.taobao.org/@storybook/source-loader/download/@storybook/source-loader-5.2.7.tgz#680e610d4682a0c427a86297d5edea42b8fb62f9"
+  integrity sha1-aA5hDUaCoMQnqGKX1e3qQrj7Yvk=
+  dependencies:
+    "@storybook/addons" "5.2.7"
+    "@storybook/router" "5.2.7"
+    core-js "^3.0.1"
+    estraverse "^4.2.0"
+    global "^4.3.2"
+    loader-utils "^1.2.3"
+    prettier "^1.16.4"
+    prop-types "^15.7.2"
+    regenerator-runtime "^0.12.1"
 
 "@storybook/theming@5.2.7":
   version "5.2.7"
@@ -3633,7 +3667,7 @@ esrecurse@^4.1.0:
   dependencies:
     estraverse "^4.1.0"
 
-estraverse@^4.1.0, estraverse@^4.1.1:
+estraverse@^4.1.0, estraverse@^4.1.1, estraverse@^4.2.0:
   version "4.3.0"
   resolved "https://registry.npm.taobao.org/estraverse/download/estraverse-4.3.0.tgz#398ad3f3c5a24948be7725e83d11a7de28cdbd1d"
   integrity sha1-OYrT88WiSUi+dyXoPRGn3ijNvR0=
@@ -6056,6 +6090,11 @@ prepend-http@^1.0.0:
   version "1.0.4"
   resolved "https://registry.npm.taobao.org/prepend-http/download/prepend-http-1.0.4.tgz#d4f4562b0ce3696e41ac52d0e002e57a635dc6dc"
   integrity sha1-1PRWKwzjaW5BrFLQ4ALlemNdxtw=
+
+prettier@^1.16.4:
+  version "1.19.1"
+  resolved "https://registry.npm.taobao.org/prettier/download/prettier-1.19.1.tgz#f7d7f5ff8a9cd872a7be4ca142095956a60797cb"
+  integrity sha1-99f1/4qc2HKnvkyhQglZVqYHl8s=
 
 pretty-error@^2.1.1:
   version "2.1.1"
