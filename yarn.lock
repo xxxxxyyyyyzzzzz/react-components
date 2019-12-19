@@ -3645,6 +3645,11 @@ commander@^4.0.0:
   resolved "https://registry.npm.taobao.org/commander/download/commander-4.0.1.tgz?cache=0&sync_timestamp=1573464045808&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fcommander%2Fdownload%2Fcommander-4.0.1.tgz#b67622721785993182e807f4883633e6401ba53c"
   integrity sha1-tnYicheFmTGC6Af0iDYz5kAbpTw=
 
+commitlint-config-gitmoji@1.0.1:
+  version "1.0.1"
+  resolved "https://registry.npm.taobao.org/commitlint-config-gitmoji/download/commitlint-config-gitmoji-1.0.1.tgz#13dc3fe991dd1aec7ef36bdd88beb97874e00857"
+  integrity sha1-E9w/6ZHdGux+82vdiL65eHTgCFc=
+
 commitlint@8.2.0:
   version "8.2.0"
   resolved "https://registry.npm.taobao.org/commitlint/download/commitlint-8.2.0.tgz#c081639d09904af0f3f60db75e3afdf1ab2e523d"
