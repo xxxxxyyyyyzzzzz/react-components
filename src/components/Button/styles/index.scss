@@ -1,0 +1,125 @@
+@import './mixin';
+@import '~-/styles/variables';
+
+$btn-prefix: #{$prefix}-btn;
+
+.#{$btn-prefix} {
+  @include button-default;
+  @include hollow-button-pseudo-color(
+    $light-highlight-primary-color,
+    $dark-highlight-primary-color,
+    $btn-default-bg
+  );
+  @include button-disabled;
+
+  display: inline-block;
+  font-weight: 400;
+  line-height: 1.5;
+  white-space: nowrap;
+  text-align: center;
+  border-style: $btn-border-style;
+  border-width: $btn-border-width;
+  border-radius: 4px;
+  outline: 0;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.015);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  user-select: none;
+  touch-action: manipulation;
+
+  &-primary {
+    @include button-primary;
+  }
+
+  &-dashed {
+    @include button-dashed;
+  }
+
+  &-danger {
+    @include button-danger;
+  }
+
+  &-link {
+    @include button-link;
+  }
+
+  &-ghost {
+    @include button-ghost;
+  }
+
+  &-circle {
+    min-width: 32px;
+    padding-right: 0;
+    padding-left: 0;
+    text-align: center;
+    border-radius: 50%;
+  }
+
+  &-round {
+    height: 32px;
+    padding: 0 16px;
+    font-size: 14px;
+    border-radius: 32px;
+  }
+
+  &-large {
+    @include button-size(40px, 15px, 16px);
+  }
+
+  &-small {
+    @include button-size(24px, 7px);
+  }
+
+  @at-root #{&}-primary#{&}-ghost {
+    @include button-color($primary-color, transparent, $primary-color);
+    @include hollow-button-pseudo-color(
+      $light-highlight-primary-color,
+      $dark-highlight-primary-color,
+      transparent
+    );
+  }
+
+  @at-root #{&}-danger#{&}-ghost {
+    @include button-color($btn-danger-bg, transparent, $btn-danger-bg);
+    @include hollow-button-pseudo-color(
+      $light-highlight-error-color,
+      $dark-highlight-error-color,
+      transparent
+    );
+  }
+
+  @at-root #{&}-link#{&}-ghost {
+    @include button-color($btn-ghost-color, transparent, transparent);
+    @include hollow-button-pseudo-color(
+      $light-highlight-primary-color,
+      $dark-highlight-primary-color,
+      transparent
+    );
+
+    &:hover,
+    &:focus,
+    &:active {
+      border-color: transparent;
+    }
+  }
+}
+
+.#{$btn-prefix}-large.#{$btn-prefix}-circle {
+  min-width: 40px;
+}
+
+.#{$btn-prefix}-large.#{$btn-prefix}-round {
+  @include button-size(40px, 20px, 16px);
+
+  border-radius: 40px;
+}
+
+.#{$btn-prefix}-small.#{$btn-prefix}-circle {
+  min-width: 24px;
+}
+
+.#{$btn-prefix}-small.#{$btn-prefix}-round {
+  @include button-size(24px, 12px, 14px);
+
+  border-radius: 24px;
+}

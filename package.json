@@ -6,7 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "lint": "eslint -f table",
+    "ts-compile-check": "tsc",
+    "lint-staged": "lint-staged"
   },
   "repository": {
     "type": "git",
@@ -19,21 +22,84 @@
     "url": "https://github.com/xxxxxyyyyyzzzzz/react-components/issues"
   },
   "homepage": "https://github.com/xxxxxyyyyyzzzzz/react-components#readme",
-  "dependencies": {},
-  "devDependencies": {
-    "@babel/core": "7.7.4",
+  "dependencies": {
     "@storybook/addon-a11y": "5.2.8",
-    "@storybook/addon-actions": "5.2.6",
+    "@storybook/addon-actions": "5.2.8",
     "@storybook/addon-backgrounds": "5.2.8",
     "@storybook/addon-console": "1.2.1",
-    "@storybook/addon-docs": "5.2.7",
-    "@storybook/addon-knobs": "5.2.7",
-    "@storybook/addon-links": "5.2.6",
-    "@storybook/addon-storysource": "5.2.7",
+    "@storybook/addon-docs": "5.2.8",
+    "@storybook/addon-knobs": "5.2.8",
+    "@storybook/addon-links": "5.2.8",
+    "@storybook/addon-storysource": "5.2.8",
     "@storybook/addon-viewport": "5.2.8",
-    "@storybook/addons": "5.2.6",
-    "@storybook/react": "5.2.6",
+    "classnames": "2.2.6",
+    "fibers": "4.0.2",
+    "husky": "3.1.0",
+    "lint-staged": "9.5.0",
+    "normalize-scss": "7.0.1",
+    "react": "16.12.0",
+    "sass": "1.23.7",
+    "sass-loader": "8.0.0",
+    "typescript": "3.7.3"
+  },
+  "devDependencies": {
+    "@babel/core": "7.7.4",
+    "@commitlint/cli": "8.2.0",
+    "@commitlint/config-conventional": "8.2.0",
+    "@storybook/addons": "5.2.8",
+    "@storybook/react": "5.2.8",
+    "@types/classnames": "2.2.9",
+    "@typescript-eslint/eslint-plugin": "2.10.0",
+    "@typescript-eslint/parser": "2.10.0",
     "babel-loader": "8.0.6",
-    "yarn": "1.19.2"
+    "commitlint": "8.2.0",
+    "eslint": "6.7.2",
+    "eslint-config-airbnb": "18.0.1",
+    "eslint-config-prettier": "6.7.0",
+    "eslint-plugin-import": "2.19.1",
+    "eslint-plugin-jsx-a11y": "6.2.3",
+    "eslint-plugin-prettier": "3.1.1",
+    "eslint-plugin-react": "7.17.0",
+    "eslint-plugin-react-hooks": "1.7.0",
+    "prettier": "1.19.1",
+    "stylelint": "12.0.0",
+    "stylelint-config-css-modules": "2.1.0",
+    "stylelint-config-prettier": "8.0.0",
+    "stylelint-config-rational-order": "0.1.2",
+    "stylelint-config-recommended-scss": "4.1.0",
+    "stylelint-config-sass-guidelines": "6.2.0",
+    "stylelint-config-standard": "19.0.0",
+    "stylelint-declaration-block-no-ignored-properties": "2.2.0",
+    "stylelint-prettier": "1.1.1",
+    "yarn": "1.21.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run ts-compile-check && npm run lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx}": [
+      "eslint --fix -f table",
+      "git add"
+    ],
+    "**/*.css": [
+      "stylelint --fix",
+      "git add"
+    ],
+    "**/*.scss": [
+      "stylelint --syntax=scss --fix",
+      "git add"
+    ],
+    "**/*.less": [
+      "stylelint --syntax=less --fix",
+      "git add"
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   }
 }

@@ -1,0 +1,128 @@
+@import '~-/styles/variables';
+
+@mixin button-color(
+  $color: $btn-default-color,
+  $background: $btn-default-bg,
+  $border: $btn-default-border
+) {
+  color: $color;
+  background-color: $background;
+  border-color: $border;
+}
+
+@mixin button-size(
+  $height: $btn-height-base,
+  $padding: $padding-md - 1,
+  $font-size: $font-size-base
+) {
+  height: $height;
+  padding: 0 $padding;
+  font-size: $font-size;
+}
+
+@mixin button-disabled(
+  $color: $btn-disabled-color,
+  $background: $btn-disabled-bg,
+  $border: $btn-disabled-border-color
+) {
+  /* stylelint-disable selector-no-qualifying-type */
+  &-disabled,
+  &.disabled,
+  &[disabled] {
+    &,
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      @include button-color($color, $background, $border);
+
+      text-shadow: none;
+      box-shadow: none;
+      cursor: not-allowed;
+    }
+  }
+}
+
+@mixin button-default() {
+  @include button-color;
+  @include button-size;
+}
+
+@mixin button-primary() {
+  @include button-color($btn-primary-color, $primary-color, $primary-color);
+  @include solid-button-pseudo-color(
+    $btn-primary-color,
+    $light-highlight-primary-color,
+    $dark-highlight-primary-color
+  );
+  @include button-disabled;
+
+  text-shadow: $btn-text-shadow;
+  box-shadow: $btn-primary-shadow;
+}
+
+@mixin button-dashed() {
+  @include button-color($btn-default-color, $btn-default-bg, $btn-default-border);
+  @include hollow-button-pseudo-color(
+    $light-highlight-primary-color,
+    $dark-highlight-primary-color,
+    $btn-default-bg
+  );
+  @include button-disabled;
+
+  border-style: dashed;
+}
+
+@mixin button-danger() {
+  @include button-color($btn-danger-color, $btn-danger-bg, $btn-danger-border-color);
+  @include solid-button-pseudo-color(
+    $btn-danger-color,
+    $light-highlight-error-color,
+    $dark-highlight-error-color
+  );
+  @include button-disabled;
+}
+
+@mixin button-link() {
+  @include button-color($link-color, transparent, transparent);
+  @include hollow-button-pseudo-color($link-hover-color, $link-active-color, transparent);
+  @include button-disabled($btn-disabled-color, transparent, transparent);
+
+  box-shadow: none;
+
+  &:hover,
+  &:focus,
+  &:active {
+    border-color: transparent;
+  }
+}
+
+@mixin button-ghost($color: $btn-ghost-color, $border-color: $btn-ghost-border) {
+  @include button-color($color, $btn-ghost-bg, $border-color);
+  @include hollow-button-pseudo-color($link-hover-color, $link-active-color, transparent);
+  @include button-disabled($btn-disabled-color, transparent, $btn-disabled-border-color);
+
+  text-shadow: none;
+}
+
+@mixin hollow-button-pseudo-color($light-color, $dark-color, $background) {
+  &:hover,
+  &:focus {
+    @include button-color($light-color, $background, $light-color);
+  }
+
+  &:active {
+    @include button-color($dark-color, $background, $dark-color);
+  }
+}
+
+@mixin solid-button-pseudo-color($color, $light-color, $dark-color) {
+  &:hover,
+  &:focus {
+    @include button-color($color, $light-color, $light-color);
+  }
+
+  &:active {
+    @include button-color($color, $dark-color, $dark-color);
+  }
+}
