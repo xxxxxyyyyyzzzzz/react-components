@@ -1,51 +1,96 @@
-const createCompiler = require("@storybook/addon-docs/mdx-compiler-plugin");
+const path = require('path')
+const createCompiler = require('@storybook/addon-docs/mdx-compiler-plugin')
 
 module.exports = ({ config, mode }) => {
   config.module.rules.push({
     test: /\.(ts|tsx)$/,
-    loader: require.resolve("babel-loader"),
-    options: {
-      presets: [["react-app", { flow: false, typescript: true }]]
-    }
-  });
-
-  config.module.rules.push({
-    test: /\.mdx$/,
     use: [
       {
-        loader: "babel-loader",
-        // may or may not need this line depending on your app's setup
+        loader: require.resolve('babel-loader'),
         options: {
-          plugins: ["@babel/plugin-transform-react-jsx"]
-        }
+          presets: [['react-app', { flow: false, typescript: true }]],
+        },
       },
       {
-        loader: "@mdx-js/loader",
-        options: {
-          compilers: [createCompiler({})]
-        }
-      }
-    ]
-  });
+        loader: require.resolve('react-docgen-typescript-loader'),
+        options: { setDisplayName: false },
+      },
+    ],
+  })
 
   config.module.rules.push({
-    test: /\.(ts|tsx)$/,
-    loaders: [
+    test: /\.(story|stories)\.mdx$/,
+    use: [
       {
-        loader: require.resolve("@storybook/source-loader"),
+        loader: 'babel-loader',
+        // may or may not need this line depending on your app's setup
         options: {
-          parser: "typescript",
+          plugins: ['@babel/plugin-transform-react-jsx'],
+        },
+      },
+      {
+        loader: '@mdx-js/loader',
+        options: {
+          compilers: [createCompiler({})],
+        },
+      },
+    ],
+  })
+
+  config.module.rules.push({
+    test: /\.(stories|story)\.[tj]sx?$/,
+    use: [
+      {
+        loader: require.resolve('@storybook/source-loader'),
+        options: {
+          // parser: 'typescript',
           prettierConfig: {
             printWidth: 100,
-            singleQuote: false
+            singleQuote: false,
           },
-          uglyCommentsRegex: [/^eslint-.*/, /^global.*/, /^@ts-.*/]
-        }
-      }
+          uglyCommentsRegex: [/^eslint-.*/, /^global.*/, /^@ts-.*/],
+        },
+      },
     ],
-    enforce: "pre"
-  });
+    // loaders: [
+    //   {
+    //     loader: [
+    //       require.resolve('@storybook/source-loader'),
+    //       require.resolve('react-docgen-typescript-loader'),
+    //     ],
+    //     options: {
+    //       parser: 'typescript',
+    //       prettierConfig: {
+    //         printWidth: 100,
+    //         singleQuote: false,
+    //       },
+    //       uglyCommentsRegex: [/^eslint-.*/, /^global.*/, /^@ts-.*/],
+    //     },
+    //   },
+    // ],
+    enforce: 'pre',
+  })
 
-  config.resolve.extensions.push(".ts", ".tsx");
-  return config;
-};
+  config.module.rules.push({
+    test: /\.scss$/,
+    use: [
+      'style-loader',
+      'css-loader',
+      {
+        loader: 'sass-loader',
+        options: {
+          implementation: require('sass'),
+          sassOptions: {
+            includePaths: [path.resolve(__dirname, '../node_modules/normalize-scss/sass')],
+            fiber: require('fibers'),
+          },
+        },
+      },
+    ],
+  })
+
+  config.resolve.alias['-'] = path.resolve(__dirname, '../src')
+  config.resolve.extensions.push('.ts', '.tsx')
+
+  return config
+}
