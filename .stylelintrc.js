@@ -32,7 +32,7 @@ module.exports = {
     // 'scss/at-rule-no-unknown': true,
     // https://stylelint.io/user-guide/rules/max-nesting-depth/
     'max-nesting-depth': [
-      1,
+      2,
       {
         ignoreAtRules: ['each', 'media', 'supports', 'include'],
         ignore: ['pseudo-classes'],

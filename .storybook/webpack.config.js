@@ -4,14 +4,22 @@ const createCompiler = require('@storybook/addon-docs/mdx-compiler-plugin')
 module.exports = ({ config, mode }) => {
   config.module.rules.push({
     test: /\.(ts|tsx)$/,
-    loader: require.resolve('babel-loader'),
-    options: {
-      presets: [['react-app', { flow: false, typescript: true }]],
-    },
+    use: [
+      {
+        loader: require.resolve('babel-loader'),
+        options: {
+          presets: [['react-app', { flow: false, typescript: true }]],
+        },
+      },
+      {
+        loader: require.resolve('react-docgen-typescript-loader'),
+        options: { setDisplayName: false },
+      },
+    ],
   })
 
   config.module.rules.push({
-    test: /\.mdx$/,
+    test: /\.(story|stories)\.mdx$/,
     use: [
       {
         loader: 'babel-loader',
@@ -30,12 +38,12 @@ module.exports = ({ config, mode }) => {
   })
 
   config.module.rules.push({
-    test: /\.(ts|tsx)$/,
-    loaders: [
+    test: /\.(stories|story)\.[tj]sx?$/,
+    use: [
       {
         loader: require.resolve('@storybook/source-loader'),
         options: {
-          parser: 'typescript',
+          // parser: 'typescript',
           prettierConfig: {
             printWidth: 100,
             singleQuote: false,
@@ -44,6 +52,22 @@ module.exports = ({ config, mode }) => {
         },
       },
     ],
+    // loaders: [
+    //   {
+    //     loader: [
+    //       require.resolve('@storybook/source-loader'),
+    //       require.resolve('react-docgen-typescript-loader'),
+    //     ],
+    //     options: {
+    //       parser: 'typescript',
+    //       prettierConfig: {
+    //         printWidth: 100,
+    //         singleQuote: false,
+    //       },
+    //       uglyCommentsRegex: [/^eslint-.*/, /^global.*/, /^@ts-.*/],
+    //     },
+    //   },
+    // ],
     enforce: 'pre',
   })
 

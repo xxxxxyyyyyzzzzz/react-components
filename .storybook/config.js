@@ -3,6 +3,7 @@ import { configure, addParameters, addDecorator } from '@storybook/react'
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport'
 import { withA11y } from '@storybook/addon-a11y'
 import { themes } from '@storybook/theming'
+import { DocsPage, DocsContainer } from '@storybook/addon-docs/blocks'
 // import { setConsoleOptions, withConsole } from "@storybook/addon-console";
 import '@storybook/addon-console'
 
@@ -15,9 +16,13 @@ addDecorator((storyFn, context) => <div style={{ padding: '0 60px 50px' }}>{stor
 addDecorator(withA11y)
 
 addParameters({
+  // docs: {
+  //   container: DocsContainer,
+  //   page: DocsPage,
+  // },
   options: {
     panelPosition: 'right',
-    theme: themes.dark,
+    theme: themes.normal,
   },
   viewport: {
     viewports: INITIAL_VIEWPORTS,

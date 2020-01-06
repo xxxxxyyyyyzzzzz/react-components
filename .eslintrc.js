@@ -5,11 +5,13 @@ module.exports = {
     browser: true,
     es6: true,
   },
+  plugins: ['react', '@typescript-eslint', 'prettier'],
   extends: [
-    'plugin:@typescript-eslint/recommended',
     'plugin:react/recommended',
     'airbnb',
     'airbnb/hooks',
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:@typescript-eslint/recommended',
     'plugin:import/typescript',
     'prettier',
     'prettier/@typescript-eslint',
@@ -27,7 +29,6 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: 'module',
   },
-  plugins: ['react', '@typescript-eslint', 'prettier'],
   settings: {
     'import/resolver': {
       // webpack: {
@@ -51,5 +52,14 @@ module.exports = {
     'import/extensions': 0,
     'react/button-has-type': 0,
     'react/jsx-props-no-spreading': 0,
+    '@typescript-eslint/no-unused-vars': [
+      'error',
+      {
+        vars: 'all',
+        args: 'after-used',
+        ignoreRestSiblings: true,
+        argsIgnorePattern: '^_$',
+      },
+    ],
   },
 }

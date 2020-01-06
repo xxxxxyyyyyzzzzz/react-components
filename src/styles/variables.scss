@@ -1,4 +1,4 @@
-$prefix: 'sprint';
+$prefix: sprint;
 
 $normal-color: #d9d9d9;
 $primary-color: #1890ff;
@@ -97,3 +97,8 @@ $link-hover-color: $light-highlight-primary-color;
 $link-active-color: $dark-highlight-primary-color;
 $link-decoration: none;
 $link-hover-decoration: none;
+
+/* stylelint-disable selector-pseudo-class-no-unknown, property-no-unknown */
+:export {
+  prefix: $prefix;
+}

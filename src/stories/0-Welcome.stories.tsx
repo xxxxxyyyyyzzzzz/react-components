@@ -8,9 +8,9 @@ import { Welcome } from '@storybook/react/demo'
 export default {
   title: 'Welcome',
   parameters: {
-    docs: {
-      page: null,
-    },
+    // docs: {
+    //   page: null,
+    // },
   },
 }
 
